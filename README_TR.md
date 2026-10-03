@@ -23,15 +23,13 @@ AI Workbench MCP, yerel bir kataloğu Model Context Protocol stdio üzerinden su
 
 ## Hızlı başlangıç
 
+PyPI'deki yayınlanmış alpha sürümünü kur:
+
 ```bash
-python -m venv .venv
-python -m pip install -e .
-python examples/smoke_client.py
+python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a1"
 ```
 
-Başarılı çalıştırmada MCP handshake sonucu ve üç tool adı görünür.
-
-MCP hostunun çalıştıracağı komut:
+Ardından stdio destekli MCP hostunun çalıştıracağı komut:
 
 ```text
 alptugharun-ai-workbench-mcp
@@ -61,9 +59,13 @@ CI Linux ve Windows üzerinde çalışır.
 
 ## PyPI / MCP Registry
 
-İlk paket adayı `0.1.0a1`.
+**PyPI:** `alptugharun-ai-workbench-mcp==0.1.0a1` GitHub OIDC Trusted Publishing ile yayınlandı. Release workflow'u wheel dosyasını keyless Sigstore ile de imzalıyor.
 
-PyPI ve resmi MCP Registry yayını, gerçek yayın ve temiz kurulum doğrulanmadan "tamamlandı" olarak gösterilmeyecek. Ayrıntılar için [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
+Temiz bir Windows sanal ortamında PyPI'den exact version kurulumu başarıyla doğrulandı; MCP `2025-06-18` handshake'i, üç tool'un listelenmesi, başarılı `render_prompt` / `get_assistant` çağrıları ve bilinmeyen tool için kontrollü hata yolu test edildi.
+
+**Resmi MCP Registry:** metadata, güncel registry üzerinde `mcp-publisher v1.8.1` ile doğrulandı. Sıradaki kapı registry yayını; registry kabulü gerçek MCP host uyumluluğu kanıtından ayrı tutulacak.
+
+Ayrıntılar için [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
 
 Bu proje [AI Social Media Toolkit](https://github.com/alptugharun/ai-social-media-toolkit) içinden ayrıştırıldı.
 
