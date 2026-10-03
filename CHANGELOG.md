@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added a dated maintainer-run Cursor host verification record covering all three public MCP tools.
 - Standalone repository extracted from AI Social Media Toolkit.
 - Added focused protocol tests, smoke client, CI, security and contribution docs.
 
