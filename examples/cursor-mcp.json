@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ai-workbench-mcp": {
+      "type": "stdio",
+      "command": "python",
+      "args": [
+        "-m",
+        "ai_workbench_mcp.server"
+      ]
+    }
+  }
+}
