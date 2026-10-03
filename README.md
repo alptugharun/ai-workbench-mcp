@@ -93,9 +93,11 @@ CI runs the package and protocol tests on Linux and Windows.
 
 A clean Windows virtual environment installed the exact PyPI version successfully, negotiated MCP protocol `2025-06-18`, listed all three tools, completed successful `render_prompt` and `get_assistant` calls, and returned a bounded error for an unknown tool.
 
-**Official MCP Registry:** `io.github.alptugharun/ai-workbench-mcp` is published and currently reports `active` in the production registry. Registry acceptance remains separate from real-host compatibility evidence.
+**Official MCP Registry:** `io.github.alptugharun/ai-workbench-mcp` is published and currently reports `active` in the production registry.
 
-See [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
+**Real-host verification:** a maintainer-run Cursor 3.20.21 session invoked `list_prompts`, `render_prompt` and `get_assistant` successfully against the published package. This is host evidence, not an independent third-party endorsement or a universal compatibility claim.
+
+See [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md) and [HOST-VERIFICATION.md](HOST-VERIFICATION.md).
 
 ## Contributing
 
