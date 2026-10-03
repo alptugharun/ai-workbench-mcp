@@ -93,7 +93,7 @@ CI runs the package and protocol tests on Linux and Windows.
 
 A clean Windows virtual environment installed the exact PyPI version successfully, negotiated MCP protocol `2025-06-18`, listed all three tools, completed successful `render_prompt` and `get_assistant` calls, and returned a bounded error for an unknown tool.
 
-**Official MCP Registry:** metadata is validated against the current registry using `mcp-publisher v1.8.1`; publication is the next gate. Registry acceptance remains separate from real-host compatibility evidence.
+**Official MCP Registry:** `io.github.alptugharun/ai-workbench-mcp` is published and currently reports `active` in the production registry. Registry acceptance remains separate from real-host compatibility evidence.
 
 See [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
 
