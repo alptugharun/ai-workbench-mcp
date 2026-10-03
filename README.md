@@ -59,7 +59,7 @@ Launch command:
 alptugharun-ai-workbench-mcp
 ```
 
-This repository documents the stdio server itself. Host-specific configuration changes over time, so use the current documentation for the MCP client you are connecting.
+This repository documents the stdio server itself. For the host we have actually exercised, use the copy/paste [Cursor setup and 3-tool verification guide](CURSOR-SETUP.md). Other MCP clients can differ, so use their current documentation rather than assuming Cursor's configuration is portable.
 
 ## Security model
 

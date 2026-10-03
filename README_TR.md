@@ -35,7 +35,7 @@ Ardından stdio destekli MCP hostunun çalıştıracağı komut:
 alptugharun-ai-workbench-mcp
 ```
 
-Host'a özel ayarlar zamanla değişebildiği için kullandığın MCP istemcisinin güncel dokümantasyonunu takip et.
+Gerçek host testi yaptığımız Cursor için kopyala-yapıştır [Cursor kurulum + 3 tool doğrulama rehberini](CURSOR-SETUP_TR.md) kullan. Diğer MCP istemcilerinin config yapısı farklı olabilir; Cursor ayarını evrensel varsayma.
 
 ## Güvenlik modeli
 
@@ -63,9 +63,11 @@ CI Linux ve Windows üzerinde çalışır.
 
 Temiz bir Windows sanal ortamında PyPI'den exact version kurulumu başarıyla doğrulandı; MCP `2025-06-18` handshake'i, üç tool'un listelenmesi, başarılı `render_prompt` / `get_assistant` çağrıları ve bilinmeyen tool için kontrollü hata yolu test edildi.
 
-**Resmi MCP Registry:** `io.github.alptugharun/ai-workbench-mcp` production registry'de yayınlandı ve şu anda `active` görünüyor. Registry kabulü gerçek MCP host uyumluluğu kanıtından ayrı tutulacak.
+**Resmi MCP Registry:** `io.github.alptugharun/ai-workbench-mcp` production registry'de yayınlandı ve şu anda `active` görünüyor.
 
-Ayrıntılar için [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
+**Gerçek host doğrulaması:** maintainer-run Cursor 3.20.21 testinde `list_prompts`, `render_prompt` ve `get_assistant` başarıyla çağrıldı. Bu kanıt bağımsız üçüncü taraf doğrulaması veya tüm MCP hostları için evrensel uyumluluk iddiası değildir.
+
+Ayrıntılar: [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md) · [HOST-VERIFICATION.md](HOST-VERIFICATION.md) · [Cursor kurulum rehberi](CURSOR-SETUP_TR.md).
 
 Bu proje [AI Social Media Toolkit](https://github.com/alptugharun/ai-social-media-toolkit) içinden ayrıştırıldı.
 
