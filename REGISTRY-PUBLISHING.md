@@ -24,6 +24,7 @@ mcp-name: io.github.alptugharun/ai-workbench-mcp
 - A clean exact-version install from PyPI succeeded.
 - stdio verification passed for initialize, notifications/initialized, tools/list, successful render_prompt, successful get_assistant, and a bounded unknown-tool error.
 - `server.json` validates successfully against the production MCP Registry using `mcp-publisher v1.8.1`.
+- GitHub OIDC publication succeeded and the production Registry API returns `io.github.alptugharun/ai-workbench-mcp` version `0.1.0a1` with status `active`.
 - Real-host compatibility evidence is still tracked separately from package/registry validation.
 
 ## Pre-publish checks
@@ -57,7 +58,7 @@ Pending publisher values:
 6. [x] verify initialize → initialized → tools/list → public tools/call paths and bounded invalid-tool behavior;
 7. [x] add `server.json` using the current schema;
 8. [x] run `mcp-publisher validate server.json`;
-9. [ ] publish to the official MCP Registry through GitHub OIDC;
+9. [x] publish to the official MCP Registry through GitHub OIDC;
 10. [ ] record at least one real-host result separately from registry acceptance.
 
 Registry acceptance is metadata/ownership evidence, not universal host compatibility.

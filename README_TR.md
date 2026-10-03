@@ -63,7 +63,7 @@ CI Linux ve Windows üzerinde çalışır.
 
 Temiz bir Windows sanal ortamında PyPI'den exact version kurulumu başarıyla doğrulandı; MCP `2025-06-18` handshake'i, üç tool'un listelenmesi, başarılı `render_prompt` / `get_assistant` çağrıları ve bilinmeyen tool için kontrollü hata yolu test edildi.
 
-**Resmi MCP Registry:** metadata, güncel registry üzerinde `mcp-publisher v1.8.1` ile doğrulandı. Sıradaki kapı registry yayını; registry kabulü gerçek MCP host uyumluluğu kanıtından ayrı tutulacak.
+**Resmi MCP Registry:** `io.github.alptugharun/ai-workbench-mcp` production registry'de yayınlandı ve şu anda `active` görünüyor. Registry kabulü gerçek MCP host uyumluluğu kanıtından ayrı tutulacak.
 
 Ayrıntılar için [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
 
