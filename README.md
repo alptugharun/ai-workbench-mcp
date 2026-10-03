@@ -45,27 +45,13 @@ The server keeps the useful parts local and makes its limits obvious:
 
 ## Quick start
 
-### 1. Create a virtual environment
+Install the published alpha package:
 
 ```bash
-python -m venv .venv
+python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a1"
 ```
 
-Activate it, then install the package:
-
-```bash
-python -m pip install -e .
-```
-
-### 2. Run the smoke client
-
-```bash
-python examples/smoke_client.py
-```
-
-A successful run prints the negotiated MCP version and all three tool names.
-
-### 3. Point an MCP host at the server
+Then point a stdio-capable MCP host at the server:
 
 Launch command:
 
@@ -103,9 +89,11 @@ CI runs the package and protocol tests on Linux and Windows.
 
 ## Package / registry status
 
-The first package candidate is `0.1.0a1`.
+**PyPI:** `alptugharun-ai-workbench-mcp==0.1.0a1` is published through GitHub OIDC Trusted Publishing. The release workflow also signs the wheel with keyless Sigstore.
 
-PyPI and official MCP Registry publication are intentionally treated as separate proof steps. This README will not claim either one until the exact published artifact can be installed from a clean environment and called from a real MCP host.
+A clean Windows virtual environment installed the exact PyPI version successfully, negotiated MCP protocol `2025-06-18`, listed all three tools, completed successful `render_prompt` and `get_assistant` calls, and returned a bounded error for an unknown tool.
+
+**Official MCP Registry:** metadata is validated against the current registry using `mcp-publisher v1.8.1`; publication is the next gate. Registry acceptance remains separate from real-host compatibility evidence.
 
 See [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md).
 
