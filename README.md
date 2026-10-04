@@ -3,6 +3,7 @@
 [![CI](https://github.com/alptugharun/ai-workbench-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/alptugharun/ai-workbench-mcp/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/alptugharun/ai-workbench-mcp/actions/workflows/codeql.yml/badge.svg)](https://github.com/alptugharun/ai-workbench-mcp/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/alptugharun/ai-workbench-mcp/badge)](https://scorecard.dev/viewer/?uri=github.com/alptugharun/ai-workbench-mcp)
+[![PyPI](https://img.shields.io/pypi/v/alptugharun-ai-workbench-mcp?include_prereleases&label=PyPI)](https://pypi.org/project/alptugharun-ai-workbench-mcp/)
 
 <!-- mcp-name: io.github.alptugharun/ai-workbench-mcp -->
 
@@ -51,6 +52,14 @@ Install the published alpha package:
 python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a1"
 ```
 
+Confirm the local package can load before touching host configuration:
+
+```bash
+alptugharun-ai-workbench-mcp --doctor
+```
+
+A healthy result reports the package/Python versions, all three tool names, catalog counts and the read-only permission boundary. It makes no network request and does not prove host compatibility; it tells you whether the **local package layer** is healthy.
+
 Then point a stdio-capable MCP host at the server:
 
 Launch command:
@@ -97,7 +106,7 @@ A clean Windows virtual environment installed the exact PyPI version successfull
 
 **Real-host verification:** a maintainer-run Cursor 3.20.21 session invoked `list_prompts`, `render_prompt` and `get_assistant` successfully against the published package. This is host evidence, not an independent third-party endorsement or a universal compatibility claim.
 
-See [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md) and [HOST-VERIFICATION.md](HOST-VERIFICATION.md).
+See [REGISTRY-PUBLISHING.md](REGISTRY-PUBLISHING.md), [HOST-VERIFICATION.md](HOST-VERIFICATION.md) and the failure-first [Troubleshooting ladder](TROUBLESHOOTING.md).
 
 ## Contributing
 
@@ -109,13 +118,15 @@ Small, reproducible improvements are welcome. The most useful contributions righ
 - documentation corrections;
 - narrowly scoped catalog improvements.
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR. If the server works in a host we have not independently verified yet, a reproducible host report is more valuable than a generic “works for me.”
 
 ## Origin
 
 This project was extracted from [AI Social Media Toolkit](https://github.com/alptugharun/ai-social-media-toolkit) so the MCP server can evolve as a focused product instead of being buried inside a larger creator/AI repository.
 
 Built by **Alptuğ Harun**.
+
+If the server gives you a useful first result, starring the repository helps other MCP users discover it. If it fails, open a reproducible report instead — failures with environment details improve the project faster than vanity metrics.
 
 ## License
 
