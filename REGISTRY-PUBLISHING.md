@@ -8,8 +8,8 @@ This repository is the standalone distribution boundary for the read-only AI Wor
 - PyPI package: `alptugharun-ai-workbench-mcp`
 - transport: `stdio`
 - runtime hint: `uvx`
-- first package candidate: `0.1.0a1`
-- release tag: `v0.1.0a1`
+- current package: `0.1.0a2`
+- release tag: `v0.1.0a2`
 
 The README contains the ownership marker:
 
@@ -17,15 +17,15 @@ The README contains the ownership marker:
 mcp-name: io.github.alptugharun/ai-workbench-mcp
 ```
 
-## Current verified state — 2026-10-03
+## Current verified state — 2026-10-04
 
-- PyPI version `0.1.0a1` is published through GitHub OIDC Trusted Publishing.
+- PyPI version `0.1.0a2` is published through GitHub OIDC Trusted Publishing.
 - The release workflow publishes the wheel before generating Sigstore bundles, preventing signature metadata from being mistaken for a Python distribution.
 - A clean exact-version install from PyPI succeeded.
 - stdio verification passed for initialize, notifications/initialized, tools/list, successful render_prompt, successful get_assistant, and a bounded unknown-tool error.
 - `server.json` validates successfully against the production MCP Registry using `mcp-publisher v1.8.1`.
-- GitHub OIDC publication succeeded and the production Registry API returns `io.github.alptugharun/ai-workbench-mcp` version `0.1.0a1` with status `active`.
-- Maintainer-run real-host compatibility evidence is recorded separately in `HOST-VERIFICATION.md`: Cursor 3.20.21 successfully invoked all three public tools. Independent external verification is still a separate adoption goal.
+- GitHub OIDC publication succeeded and the production Registry API returns `io.github.alptugharun/ai-workbench-mcp` version `0.1.0a2` with status `active` and `isLatest: true`.
+- Maintainer-run real-host compatibility evidence is recorded separately in `HOST-VERIFICATION.md`: Cursor 3.20.21 successfully invoked all three public tools on the previously tested release path. Version `0.1.0a2` adds local diagnostics without changing the three-tool MCP surface; this publication record does not silently upgrade the existing host evidence. Independent external verification remains a separate adoption goal.
 
 ## Pre-publish checks
 
@@ -51,7 +51,7 @@ Pending publisher values:
 ## Publication order
 
 1. [x] all CI checks pass on the release commit;
-2. [x] GitHub release `v0.1.0a1` is published;
+2. [x] GitHub prerelease `v0.1.0a2` is published;
 3. [x] GitHub OIDC publishes the wheel to PyPI;
 4. [x] Sigstore signs the published release artifacts;
 5. [x] install the exact version in a clean environment;
