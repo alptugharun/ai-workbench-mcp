@@ -7,13 +7,13 @@
     "url": "https://github.com/alptugharun/ai-workbench-mcp",
     "source": "github"
   },
-  "version": "0.1.0a1",
+  "version": "0.1.0a2",
   "packages": [
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "alptugharun-ai-workbench-mcp",
-      "version": "0.1.0a1",
+      "version": "0.1.0a2",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
