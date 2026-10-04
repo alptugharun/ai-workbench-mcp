@@ -94,6 +94,51 @@ class ServerTests(unittest.TestCase):
         allowed = {"json", "re", "sys", "importlib", "typing", "__future__"}
         self.assertTrue(imported <= allowed, imported)
 
+    def test_doctor_payload_is_bounded_and_side_effect_free(self):
+        payload = server.doctor_payload()
+        self.assertEqual("pass", payload["status"])
+        self.assertEqual(__version__, payload["package_version"])
+        self.assertEqual(["list_prompts", "render_prompt", "get_assistant"], payload["tools"])
+        self.assertEqual(
+            {
+                "network": False,
+                "shell": False,
+                "filesystem_write": False,
+                "account_access": False,
+            },
+            payload["boundaries"],
+        )
+        self.assertGreater(payload["catalog"]["prompts"], 0)
+        self.assertGreater(payload["catalog"]["assistants"], 0)
+
+    def test_doctor_cli_returns_machine_readable_json(self):
+        env = os.environ.copy()
+        env["PYTHONPATH"] = str(SRC) + os.pathsep + env.get("PYTHONPATH", "")
+        result = subprocess.run(
+            [sys.executable, "-m", "ai_workbench_mcp.server", "--doctor"],
+            text=True,
+            capture_output=True,
+            timeout=10,
+            env=env,
+        )
+        self.assertEqual(0, result.returncode, result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual("pass", payload["status"])
+        self.assertEqual(__version__, payload["package_version"])
+
+    def test_version_cli_is_exact(self):
+        env = os.environ.copy()
+        env["PYTHONPATH"] = str(SRC) + os.pathsep + env.get("PYTHONPATH", "")
+        result = subprocess.run(
+            [sys.executable, "-m", "ai_workbench_mcp.server", "--version"],
+            text=True,
+            capture_output=True,
+            timeout=10,
+            env=env,
+        )
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertEqual(__version__, result.stdout.strip())
+
     def test_real_stdio_handshake(self):
         messages = [
             req("initialize", {"protocolVersion": "2025-06-18"}),

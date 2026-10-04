@@ -1,0 +1,85 @@
+name: MCP host verification
+description: Report a real-host discovery and tool-call result without overclaiming compatibility.
+title: "[Host verification] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing a real MCP host. PASS, FAIL and BLOCKED reports are all useful.
+        Do not include tokens, cookies, account IDs, private prompts, confidential documents or private paths.
+  - type: input
+    id: package
+    attributes:
+      label: Exact package version
+      placeholder: "0.1.0a2"
+    validations:
+      required: true
+  - type: input
+    id: host
+    attributes:
+      label: Host and exact version
+      placeholder: "Cursor 3.x.x"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS and version
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Doctor output
+      render: json
+    validations:
+      required: true
+  - type: dropdown
+    id: discovery
+    attributes:
+      label: Did the host discover all three public tools?
+      options:
+        - "Yes"
+        - "No"
+        - "Blocked before discovery"
+    validations:
+      required: true
+  - type: checkboxes
+    id: calls
+    attributes:
+      label: Tool calls completed
+      options:
+        - label: list_prompts
+        - label: render_prompt
+        - label: get_assistant
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public-safe observed result
+      description: Give the smallest output/error excerpt needed to reproduce the result.
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Overall result
+      options:
+        - PASS
+        - FAIL
+        - BLOCKED
+    validations:
+      required: true
+  - type: textarea
+    id: friction
+    attributes:
+      label: First confusing or blocked step
+      description: What should the docs or product make easier next?
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety
+      options:
+        - label: I removed secrets, private data and identifying local paths from this report.
+          required: true

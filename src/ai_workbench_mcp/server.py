@@ -251,10 +251,57 @@ def serve(input_stream, output_stream, catalog: dict) -> int:
             print(json.dumps(response, ensure_ascii=False), file=output_stream, flush=True)
 
 
+def doctor_payload() -> dict:
+    """Return local, side-effect-free diagnostics for first-run support."""
+    catalog = load_catalog()
+    return {
+        "status": "pass",
+        "package_version": __version__,
+        "python": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
+        "supported_protocols": list(VERSIONS),
+        "tools": [tool["name"] for tool in TOOLS],
+        "catalog": {
+            "prompts": len(catalog["prompts"]),
+            "assistants": len(catalog["assistants"]),
+        },
+        "boundaries": {
+            "network": False,
+            "shell": False,
+            "filesystem_write": False,
+            "account_access": False,
+        },
+        "next_step": "Configure a stdio MCP host, then call list_prompts.",
+    }
+
+
 def main() -> int:
     for stream in (sys.stdin, sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8")
+
+    args = sys.argv[1:]
+    if args:
+        if args == ["--version"]:
+            print(__version__)
+            return 0
+        if args == ["--doctor"]:
+            try:
+                print(json.dumps(doctor_payload(), ensure_ascii=False, indent=2))
+                return 0
+            except (WorkbenchError, OSError, UnicodeError):
+                print(
+                    json.dumps(
+                        {
+                            "status": "fail",
+                            "error": "Bundled catalog is unavailable or invalid.",
+                            "next_step": "Reinstall the exact published package in a clean environment.",
+                        }
+                    )
+                )
+                return 2
+        print("Usage: alptugharun-ai-workbench-mcp [--doctor|--version]", file=sys.stderr)
+        return 2
+
     try:
         return serve(sys.stdin, sys.stdout, load_catalog())
     except (WorkbenchError, OSError, UnicodeError):
