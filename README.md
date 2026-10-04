@@ -49,7 +49,7 @@ The server keeps the useful parts local and makes its limits obvious:
 Install the published alpha package:
 
 ```bash
-python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a1"
+python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a2"
 ```
 
 Confirm the local package can load before touching host configuration:
@@ -98,7 +98,7 @@ CI runs the package and protocol tests on Linux and Windows.
 
 ## Package / registry status
 
-**PyPI:** `alptugharun-ai-workbench-mcp==0.1.0a1` is published through GitHub OIDC Trusted Publishing. The release workflow also signs the wheel with keyless Sigstore.
+**PyPI:** the project publishes through GitHub OIDC Trusted Publishing and the release workflow signs the wheel with keyless Sigstore. Version `0.1.0a2` adds the local `--doctor` / `--version` first-run diagnostics; use the PyPI badge above to confirm the release is available before installing that exact version.
 
 A clean Windows virtual environment installed the exact PyPI version successfully, negotiated MCP protocol `2025-06-18`, listed all three tools, completed successful `render_prompt` and `get_assistant` calls, and returned a bounded error for an unknown tool.
 
