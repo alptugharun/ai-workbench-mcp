@@ -5,26 +5,52 @@ labels: ["bug"]
 body:
   - type: markdown
     attributes:
-      value: "Thanks for helping make this project more reliable. Please use public-safe data only."
+      value: |
+        Thanks for helping make this project more reliable.
+        Start with `alptugharun-ai-workbench-mcp --doctor` and use public-safe data only.
+        A passing doctor result proves the local package/catalog layer, not host discovery or tool invocation.
   - type: input
     id: version
     attributes:
-      label: Version or commit
-      description: Tag, version, or commit SHA where you saw the problem.
+      label: Package version or commit
+      description: Output of --version, a tag, or commit SHA.
+      placeholder: "0.1.0a2"
     validations:
       required: true
   - type: input
     id: environment
     attributes:
       label: Environment
-      description: OS, Python/runtime version, and relevant host/client version.
+      description: OS, Python version, MCP host/client name and exact host version.
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Doctor output
+      description: Paste the public-safe JSON from alptugharun-ai-workbench-mcp --doctor.
+      render: json
+    validations:
+      required: true
+  - type: dropdown
+    id: layer
+    attributes:
+      label: First failing layer
+      options:
+        - Package install / command discovery
+        - Local doctor/catalog load
+        - MCP handshake
+        - Host discovery / tools do not appear
+        - Tool invocation
+        - Output / acceptance check
+        - Not sure
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
       label: Minimal reproduction
-      description: Exact commands or steps using synthetic/public-safe input.
+      description: Exact commands or host steps using synthetic/public-safe input.
     validations:
       required: true
   - type: textarea
@@ -41,11 +67,19 @@ body:
     validations:
       required: true
   - type: checkboxes
+    id: discovery
+    attributes:
+      label: Discovery evidence
+      options:
+        - label: The host showed list_prompts.
+        - label: The host showed render_prompt.
+        - label: The host showed get_assistant.
+  - type: checkboxes
     id: checks
     attributes:
       label: Safety check
       options:
-        - label: I removed tokens, cookies, private files, client data, and other secrets.
+        - label: I removed tokens, cookies, private files, client data, private paths, and other secrets.
           required: true
-        - label: I checked existing issues/discussions for the same problem.
+        - label: I checked TROUBLESHOOTING.md and existing issues/discussions for the same problem.
           required: true
