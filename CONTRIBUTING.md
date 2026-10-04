@@ -18,9 +18,12 @@ Good contributions include:
 ## Local checks
 
 ```bash
+python -m ai_workbench_mcp.server --doctor
 python -m unittest discover -s tests -v
 python examples/smoke_client.py
 ```
+
+When reporting host compatibility, keep these layers separate: **doctor → handshake → host discovery → tool invocation → expected output**.
 
 If a test could not run, say so in the pull request.
 
