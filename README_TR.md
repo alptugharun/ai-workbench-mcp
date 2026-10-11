@@ -4,6 +4,8 @@
 
 **Yeniden kullanılabilir AI promptları ve asistan blueprint'leri için küçük, salt-okunur bir MCP sunucusu.**
 
+**MCP nedir hiç bilmiyor musun?** **[Sıfırdan Kullanım Rehberi](BEGINNER-GUIDE_TR.md)** ile başla: ne olduğu, üç tool arasındaki fark, kurulum, doctor, beklenen çıktı ve hata çözümü.
+
 AI Workbench MCP, yerel bir kataloğu Model Context Protocol stdio üzerinden sunar. Tasarım amacı özellikle dar tutuldu:
 
 - ağ çağrısı yok;
@@ -26,7 +28,13 @@ AI Workbench MCP, yerel bir kataloğu Model Context Protocol stdio üzerinden su
 PyPI'deki yayınlanmış alpha sürümünü kur:
 
 ```bash
-python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a1"
+python -m pip install "alptugharun-ai-workbench-mcp==0.1.0a2"
+```
+
+Önce host ayarına geçmeden yerel paketi doğrula:
+
+```bash
+alptugharun-ai-workbench-mcp --doctor
 ```
 
 Ardından stdio destekli MCP hostunun çalıştıracağı komut:
@@ -59,7 +67,7 @@ CI Linux ve Windows üzerinde çalışır.
 
 ## PyPI / MCP Registry
 
-**PyPI:** `alptugharun-ai-workbench-mcp==0.1.0a1` GitHub OIDC Trusted Publishing ile yayınlandı. Release workflow'u wheel dosyasını keyless Sigstore ile de imzalıyor.
+**PyPI:** `alptugharun-ai-workbench-mcp==0.1.0a2` GitHub OIDC Trusted Publishing ile yayınlandı. Release workflow'u wheel dosyasını keyless Sigstore ile de imzalıyor.
 
 Temiz bir Windows sanal ortamında PyPI'den exact version kurulumu başarıyla doğrulandı; MCP `2025-06-18` handshake'i, üç tool'un listelenmesi, başarılı `render_prompt` / `get_assistant` çağrıları ve bilinmeyen tool için kontrollü hata yolu test edildi.
 
