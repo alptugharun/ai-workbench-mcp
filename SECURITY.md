@@ -14,14 +14,35 @@ The public tools should not:
 - call an AI provider;
 - publish external content.
 
-## Reporting
+A violation of this boundary, a way to bypass input limits/schema checks, dependency/release compromise, credential exposure, or unsafe MCP protocol behavior should be treated as a potential **vulnerability**.
 
-Do not post exploit details, credentials, or sensitive data in a public issue.
+## Private vulnerability reporting
 
-Open a minimal issue stating that you found a security concern and ask for a private contact path, or use GitHub's private vulnerability reporting when it is available for the repository.
+Do **not** post exploit details, credentials, proof-of-concept secrets, private prompts or sensitive data in a public issue.
 
-A useful report includes the affected commit, reproduction steps, impact, and the smallest known mitigation.
+Use GitHub Private Vulnerability Reporting:
+
+https://github.com/alptugharun/ai-workbench-mcp/security/advisories/new
+
+A useful report includes:
+
+- affected version and commit when known;
+- operating system / Python / MCP host when relevant;
+- minimal reproduction steps;
+- security impact;
+- sanitized logs/output;
+- the smallest known mitigation if you have one.
+
+## Coordinated disclosure
+
+The maintainer aims to acknowledge a private vulnerability report within **7 days**.
+
+When a vulnerability is confirmed, the preferred process is coordinated disclosure after a fix or mitigation is available. A **90-day** remediation/disclosure target is a goal for ordinary cases, not a guarantee; severity, ecosystem coordination and reporter agreement may require a shorter or longer timeline.
+
+Please do not publicly disclose an unpatched vulnerability before coordination unless there is an overriding safety reason.
 
 ## Maintainer rule
 
-Security fixes should add a regression test when practical and should never weaken validation to make a failing check disappear.
+Security fixes should add a regression test when practical and must never weaken validation, permissions or evidence boundaries merely to make a failing check disappear.
+
+This policy describes the reporting process; it is not a claim that the project is vulnerability-free.
