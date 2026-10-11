@@ -38,6 +38,19 @@ class ServerTests(unittest.TestCase):
             self.assertTrue(annotations["idempotentHint"])
             self.assertFalse(annotations["openWorldHint"])
 
+    def test_tool_descriptions_route_agent_between_sibling_tools(self):
+        descriptions = {tool["name"]: tool["description"] for tool in server.TOOLS}
+        self.assertIn("Use this first", descriptions["list_prompts"])
+        self.assertIn("get_assistant instead", descriptions["render_prompt"])
+        self.assertIn("render_prompt instead", descriptions["get_assistant"])
+
+    def test_initialize_publishes_read_only_usage_instructions(self):
+        result = server.CatalogServer(server.load_catalog()).handle(
+            req("initialize", {"protocolVersion": "2025-06-18"})
+        )["result"]
+        self.assertIn("list_prompts first", result["instructions"])
+        self.assertIn("no network", result["instructions"].lower())
+
     def test_list_prompts_by_public_name(self):
         result = self.initialized_server().handle(
             req("tools/call", {"name": "list_prompts", "arguments": {}})
