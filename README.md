@@ -13,6 +13,8 @@
   <strong>A tiny, read-only MCP server for reusable AI prompts and assistant blueprints.</strong>
 </p>
 
+**Never used MCP before?** Start with the **[Beginner Guide](BEGINNER-GUIDE.md)**: what MCP is, why these three tools exist, exact install/doctor steps, expected results and failure paths.
+
 <p align="center">
   <img src="https://img.shields.io/badge/MCP-read--only-111827?style=for-the-badge" alt="MCP read-only">
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+">

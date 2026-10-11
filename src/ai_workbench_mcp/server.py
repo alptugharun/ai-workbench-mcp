@@ -17,7 +17,7 @@ PLACEHOLDER_RE = re.compile(r"\{\{([a-z_]+)\}\}")
 TOOLS = [
     {
         "name": "list_prompts",
-        "description": "List the bundled prompt templates and assistant blueprints available in this local catalog.",
+        "description": "Use this first to discover valid prompt and assistant IDs in the local catalog before calling render_prompt or get_assistant. Returns catalog metadata only; no network or provider call.",
         "inputSchema": {"type": "object", "properties": {}, "additionalProperties": False},
         "annotations": {
             "title": "List AI Workbench Catalog",
@@ -29,7 +29,7 @@ TOOLS = [
     },
     {
         "name": "render_prompt",
-        "description": "Render one bundled prompt template using supplied string variables. Returns text only and does not call an AI provider.",
+        "description": "Use after list_prompts when you want one prompt template filled with the exact required string variables. Returns plain text only; use get_assistant instead for a reusable assistant blueprint. No AI provider is called.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -53,7 +53,7 @@ TOOLS = [
     },
     {
         "name": "get_assistant",
-        "description": "Return one bundled assistant blueprint formatted for a selected host. This does not create, install, publish, or modify an assistant account.",
+        "description": "Use after list_prompts when you want one reusable assistant blueprint formatted for ChatGPT, Claude, Gemini, Grok, or Agent Skill form. Use render_prompt instead for a single filled prompt. Returns local text only and does not create, install, publish, or modify an assistant account.",
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -208,6 +208,7 @@ class CatalogServer:
                 "protocolVersion": version,
                 "capabilities": {"tools": {"listChanged": False}},
                 "serverInfo": {"name": "alptugharun-ai-workbench-mcp", "version": __version__},
+                "instructions": "Read-only local catalog. Call list_prompts first to discover valid IDs. Use render_prompt for one filled prompt template and get_assistant for a reusable host-formatted assistant blueprint. This server makes no network/provider call and does not write files or modify accounts.",
             }
         elif method == "ping":
             result = {}
